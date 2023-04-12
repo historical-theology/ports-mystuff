@@ -11,7 +11,7 @@ CATEGORIES=    	textproc books
 SHARED_LIBS=	sword 9.0 
 
 HOMEPAGE=	http://crosswire.org/sword/software/swordapi.jsp
-MAINTAINER=	Vladimir Támara Patiño <vtamara@pasosdeJesus.org>
+MAINTAINER=	Vladimir Tamara Patino <vtamara@pasosdeJesus.org>
 
 # sword: GPL  kjv: free for any purpose
 PERMIT_PACKAGE=	Yes
