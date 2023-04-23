@@ -1,6 +1,4 @@
-# $OpenBSD$
-
-COMMENT=	"Bible study platform with KJV module"
+COMMENT=	Crosswire's Bible study utility
 
 V=              1.9.0
 DISTNAME=	sword-${V}
@@ -11,7 +9,7 @@ CATEGORIES=    	textproc books
 SHARED_LIBS=	sword 9.0 
 
 HOMEPAGE=	http://crosswire.org/sword/software/swordapi.jsp
-MAINTAINER=	Vladimir Tamara Patino <vtamara@pasosdeJesus.org>
+MAINTAINER=	Corey Stephan <corey.stephan@stthom.edu>
 
 # sword: GPL  kjv: free for any purpose
 PERMIT_PACKAGE=	Yes
@@ -36,7 +34,8 @@ post-install:
 	${INSTALL_DATA_DIR} ${SHARE_DIR}/mods.d/
 	${INSTALL_DATA_DIR} ${SHARE_DIR}/modules/texts/ztext/kjv/
 	${INSTALL_DATA} ${WRKDIR}/mods.d/* ${SHARE_DIR}/mods.d
-	${INSTALL_DATA} ${WRKDIR}/modules/texts/ztext/kjv/* ${SHARE_DIR}/modules/texts/ztext/kjv/
+	${INSTALL_DATA} ${WRKDIR}/modules/texts/ztext/kjv/* \
+	${SHARE_DIR}/modules/texts/ztext/kjv/
 	mv ${WRKINST}/etc/sword.conf ${SHARE_DIR}/
 
 REGRESS_TARGET=check
