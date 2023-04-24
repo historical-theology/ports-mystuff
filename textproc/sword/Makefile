@@ -2,15 +2,17 @@ COMMENT=	Crosswire's Bible study utility
 
 V=		1.9.0
 DISTNAME=	sword-${V}
-# KJV cambia continuamente
 CATEGORIES=    	textproc books
 
-MASTER_SITES=	https://crosswire.org/ftpmirror/pub/sword/source/v${V:H}/
+MASTER_SITES=	https://crosswire.org/ftpmirror/pub/sword/source/v${V:R}/
 MASTER_SITES0=	https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX} 
-DISTFILES+=	KJV.zip:0
 
-SHARED_LIBS=	sword 0.0 
+DISTFILES=   ${DISTNAME}${EXTRACT_SUFX}
+
+# keeps changing
+DISTFILES+=  KJV-2.10.2{KJV}.zip:0
+
+SHARED_LIBS= sword 0.0
 
 HOMEPAGE=	https://crosswire.org/sword/software/
 MAINTAINER=	Corey Stephan <corey.stephan@stthom.edu>
