@@ -1,0 +1,13 @@
+Index: src/wdfs-main.h
+--- src/wdfs-main.h.orig
++++ src/wdfs-main.h
+@@ -5,7 +5,8 @@
+ 	#include <config.h>
+ #endif
+ 
+-#define FUSE_USE_VERSION 25
++#define FUSE_USE_VERSION 26
++#define FUSE_VERSION 26
+ 
+ #include <fuse.h>
+ #include <ne_basic.h>

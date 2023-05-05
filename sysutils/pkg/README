@@ -1,0 +1,47 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Known Issues
+============
+
+The current implementation of wdfs-fuse for OpenBSD has a number of shortcomings
+the user should be aware of.
+
+Performance
+-----------
+WebDAV FUSE implementations are known to be very slow with certain file
+managers. The reason is that graphical file managers often try to crawl the
+remote file tree in advance or read the remote files in an attempt to find out
+their type. Since network connections are slower than local access, this results
+in a sluggish experience.
+
+It is therefore recommended to only use file managers which don't try to
+preemptively access big parts of the WebDAV storage at once. For example,
+Midnight Commander offers OK performance.
+
+In addition, wdfs does not implement all the system calls you would expect from
+a filesystem. This may cause some desktop programs to work erratically when
+trying to save files to a WebDAV FUSE mount. LibreOffice is a known offender.
+
+Security Implications
+---------------------
+The FUSE implementation included in OpenBSD only allows root to mount and
+unmount FUSE filesystems. For this reason, wdfs must be executed by the
+superuser. At this time, wdfs does not feature privilege separation of any kind
+and cannot drop to a less privileged state after being launched. The unfortunate
+implication is that wdfs will run a lot of network code with high privileges.
+
+Should a malicious WebDAV server exploit a vulnerability in wdfs or its
+supporting libraries, the attacker could gain root access. It is therefore
+advised to use wdfs to connect to trusted servers only.
+
+Example Usage
+=============
+
+To mount a NextCloud account under /home/joe/mnt and allow access to user joe,
+whose uid is 1000:
+
+# mkdir /home/joe/mnt
+# wdfs https://server.example.org/remote.php/webdav/ \
+> /home/joe/mnt -o allow_other -o uid=1000
